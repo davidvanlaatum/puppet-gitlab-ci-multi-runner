@@ -357,40 +357,58 @@ define gitlab_ci_multi_runner::runner (
 
     if $ssh_host {
         $ssh_host_opt = "--ssh-host=${ssh_host}"
+    } else {
+        $ssh_host_opt = undef
     }
 
     if $ssh_port {
         $ssh_port_opt = "--ssh-port=${ssh_port}"
+    } else {
+        $ssh_port_opt = undef
     }
 
     if $ssh_user {
         $ssh_user_opt = "--ssh-user=${ssh_user}"
+    } else {
+        $ssh_user_opt = undef
     }
 
     if $ssh_password {
         $ssh_password_opt = "--ssh-password=${ssh_password}"
+    } else {
+        $ssh_password_opt = undef
     }
 
     $ssh_opts = "${ssh_host_opt} ${ssh_port_opt} ${ssh_user_opt} ${ssh_password_opt}"
 
     if $machine_idle_nodes {
         $machine_idle_nodes_opt = "--machine-idle-nodes=${machine_idle_nodes}"
+    } else {
+        $machine_idle_nodes_opt = undef
     }
 
     if $machine_idle_time {
         $machine_idle_time_opt = "--machine-idle-time=${machine_idle_time}"
+    } else {
+        $machine_idle_time_opt = undef
     }
 
     if $machine_max_builds {
         $machine_max_builds_opt = "--machine-max-builds=${machine_max_builds}"
+    } else {
+        $machine_max_builds_opt = undef
     }
 
     if $machine_machine_driver {
         $machine_machine_driver_opt = "--machine-machine-driver=${machine_machine_driver}"
+    } else {
+        $machine_machine_driver_opt = undef
     }
 
     if $machine_machine_name {
         $machine_machine_name_opt = "--machine-machine-name=${machine_machine_name}"
+    } else {
+        $machine_machine_name_opt = undef
     }
 
     if $machine_machine_options {
