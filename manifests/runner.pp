@@ -417,52 +417,76 @@ define gitlab_ci_multi_runner::runner (
             --machine-machine-options=<%= \"'#{options}'\" -%>
             <% end -%>"
         )
+    } else {
+        $machine_machine_options_opt = undef
     }
 
     $machine_opts="${machine_idle_nodes_opt} ${machine_idle_time_opt} ${machine_max_builds_opt} ${machine_machine_driver_opt} ${machine_machine_name_opt} ${machine_machine_options_opt}"
 
     if $kubernetes_host {
         $kubernetes_host_opt="--kubernetes-host=${kubernetes_host}"
+    } else {
+        $kubernetes_host_opt = undef
     }
 
     if $kubernetes_cert_file {
         $kubernetes_cert_file_opt="--kubernetes_cert_file=${kubernetes_cert_file}"
+    } else {
+        $kubernetes_cert_file_opt = undef
     }
 
     if $kubernetes_key_file {
         $kubernetes_key_file_opt="--kubernetes-key-file=${kubernetes_key_file}"
+    } else {
+        $kubernetes_key_file_opt=undef
     }
 
     if $kubernetes_ca_file {
         $kubernetes_ca_file_opt="--kubernetes-ca-file=${kubernetes_ca_file}"
+    } else {
+        $kubernetes_ca_file_opt=undef
     }
 
     if $kubernetes_image {
         $kubernetes_image_opt="--kubernetes_image=${kubernetes_image}"
+    } else {
+        $kubernetes_image_opt=undef
     }
 
     if $kubernetes_namespace {
         $kubernetes_namespace_opt="--kubernetes-namespace=${kubernetes_namespace}"
+    } else {
+        $kubernetes_namespace_opt=undef
     }
 
     if $kubernetes_priviledged {
         $kubernetes_priviledged_opt="--kubernetes-priviledged=${kubernetes_priviledged}"
+    } else {
+        $kubernetes_priviledged_opt=undef
     }
 
     if $kubernetes_cpus {
         $kubernetes_cpus_opt="--kubernetes-cpus=${kubernetes_cpus}"
+    } else {
+        $kubernetes_cpus_opt=undef
     }
 
     if $kubernetes_memory {
         $kubernetes_memory_opt="--kubernetes-memory=${kubernetes_memory}"
+    } else {
+        $kubernetes_memory_opt=undef
     }
 
     if $kubernetes_service_cpus {
         $kubernetes_service_cpus_opt="--kubernetes-service-cpus=${kubernetes_service_cpus}"
+    } else {
+        $kubernetes_service_cpus_opt=undef
     }
 
     if $kubernetes_service_memory {
         $kubernetes_service_memory_opt="--kubernetes-service-memory=${kubernetes_service_memory}"
+    } else {
+        $kubernetes_service_memory_opt=undef
     }
 
     $kubernetes_opts="${kubernetes_host_opt} ${kubernetes_cert_file_opt} ${kubernetes_key_file_opt} ${kubernetes_ca_file_opt} ${kubernetes_image_opt} ${kubernetes_namespace_opt} ${kubernetes_priviledged_opt} ${kubernetes_cpus_opt} ${kubernetes_memory_opt} ${kubernetes_service_cpus_opt} ${kubernetes_service_memory_opt}"
