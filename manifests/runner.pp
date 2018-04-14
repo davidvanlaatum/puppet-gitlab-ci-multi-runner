@@ -227,15 +227,21 @@ define gitlab_ci_multi_runner::runner (
     if $tags {
         $tagstr = join($tags,',')
         $tags_opt = "--tag-list=${tagstr}"
+    } else {
+        $tags_opt = undef
     }
 
     if $token {
         $token_opt = "--registration-token=${token}"
+    } else {
+        $token_opt = undef
     }
 
     if $env {
         $envarry = prefix(any2array($env),'--env=')
         $env_opts = join($envarry,' ')
+    } else {
+        $env_opts = undef
     }
 
     if $run_untagged != undef {
@@ -253,6 +259,8 @@ define gitlab_ci_multi_runner::runner (
 
     if $executor {
         $executor_opt = "--executor=${executor}"
+    } else {
+        $executor_opt = undef
     }
 
     if $docker_image {
