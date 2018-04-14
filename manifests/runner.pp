@@ -251,6 +251,8 @@ define gitlab_ci_multi_runner::runner (
         else {
             $run_untagged_opt = '--run-untagged=false'
         }
+    } else {
+      $run_untagged_opt = undef
     }
 
 
