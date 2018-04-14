@@ -315,14 +315,20 @@ define gitlab_ci_multi_runner::runner (
 
     if $docker_host {
         $docker_host_opt = "--docker-host=${docker_host}"
+    } else {
+        $docker_host_opt = undef
     }
 
     if $docker_cert_path {
         $docker_cert_path_opt = "--docker-cert-path=${docker_cert_path}"
+    } else {
+        $docker_cert_path_opt = undef
     }
 
     if $docker_tlsverify {
         $docker_tlsverify_opt = "docker-tlsverify=${docker_tlsverify}"
+    } else {
+        $docker_tlsverify_opt = undef
     }
 
     $docker_opts = "${docker_host_opt} ${docker_cert_path_opt} ${docker_tlsverify_opt} ${docker_image_opt} ${docker_privileged_opt} ${docker_mysql_opt} ${docker_postgres_opt} ${docker_redis_opt} ${docker_mongo_opt} ${docker_allowed_images_opt} ${docker_allowed_services_opt} ${docker_volumes_opt}"
