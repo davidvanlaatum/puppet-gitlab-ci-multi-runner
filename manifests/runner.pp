@@ -353,6 +353,8 @@ define gitlab_ci_multi_runner::runner (
 
     if $parallels_vm {
         $parallels_vm_opt = "--parallels-vm=${parallels_vm}"
+    } else {
+        $parallels_vm_opt = undef
     }
 
     if $ssh_host {
