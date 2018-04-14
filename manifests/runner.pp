@@ -267,26 +267,38 @@ define gitlab_ci_multi_runner::runner (
 
     if $docker_image {
         $docker_image_opt = "--docker-image=${docker_image}"
+    } else {
+        $docker_image_opt = undef
     }
 
     if $docker_privileged {
         $docker_privileged_opt = '--docker-privileged'
+    } else {
+        $docker_privileged_opt = undef
     }
 
     if $docker_mysql {
         $docker_mysql_opt = "--docker-mysql=${docker_mysql}"
+    } else {
+        $docker_mysql_opt = undef
     }
 
     if $docker_postgres {
         $docker_postgres_opt = "--docker-postgres=${docker_postgres}"
+    } else {
+        $docker_postgres_opt = undef
     }
 
     if $docker_redis {
         $docker_redis_opt = "--docker-redis=${docker_redis}"
+    } else {
+        $docker_redis_opt = undef
     }
 
     if $docker_mongo {
         $docker_mongo_opt = "--docker-mongo=${docker_mongo}"
+    } else {
+        $docker_mongo_opt = undef
     }
 
     if $docker_allowed_images {
@@ -295,6 +307,8 @@ define gitlab_ci_multi_runner::runner (
             --docker-allowed-images=<%= \"'#{image}'\" -%>
             <% end -%>"
         )
+    } else {
+        $docker_allowed_images_opt = undef
     }
 
     if $docker_allowed_services {
@@ -303,6 +317,8 @@ define gitlab_ci_multi_runner::runner (
             --docker-allowed-services=<%= \"'#{service}'\" -%>
             <% end -%>"
         )
+    } else {
+        $docker_allowed_services_opt = undef
     }
 
     if $docker_volumes {
@@ -311,6 +327,8 @@ define gitlab_ci_multi_runner::runner (
             --docker-volumes=<%= \"'#{volume}'\" -%>
             <% end -%>"
         )
+    } else {
+        $docker_volumes_opt = undef
     }
 
     if $docker_host {
